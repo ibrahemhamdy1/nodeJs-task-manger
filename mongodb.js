@@ -12,12 +12,21 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
 
     const db = client.db(databaseName);
 
-    db.collection('users').insertOne({
-        name: 'hema',
-        age : '26',
-    })
-    db.collection('users').insertOne({
-        name: 'ahmed',
-        age : '26',
-    })
+        db.collection('users').insertMany([
+            {
+                name: 'hamdy',
+                age : '26',
+            },
+            {
+                name: 'ahmed',
+                age : '26',
+            }
+        ], (error, result) => {
+            if(error) {
+                return console.log('Unable to insert documents!');
+            }
+
+            console.log(result.ops);
+        }
+    )
 });
