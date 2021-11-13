@@ -10,14 +10,10 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     }
     const db = client.db(databaseName);
 
-    db.collection('tasks').updateMany({
-        completed: true
-    }, {
-        $set: {
-            completed: false
-        }
+    db.collection('users').deleteMany({
+        age: "26"
     }).then((result) => {
-        console.log(result.modifiedCount)
+        console.log(result.deletedCount)
     }).catch((error) => {
         console.log(error)
     })
