@@ -10,11 +10,15 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     }
     const db = client.db(databaseName);
 
-    Gdb.collection('tasks').findOne({_id: new ObjectId("618f8559a86bc7066be8a7b7")}, (error, task) => {
-        console.log(task);
-    })
-
-    db.collection('tasks').find({completed: false}).toArray((error, tasks) => {
-        console.log(tasks);
+    db.collection('tasks').updateMany({
+        completed: true
+    }, {
+        $set: {
+            completed: false
+        }
+    }).then((result) => {
+        console.log(result.modifiedCount)
+    }).catch((error) => {
+        console.log(error)
     })
 });
