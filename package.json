@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "env-cmd ./config/dev.env nodemon src/index.js"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "validator": "^10.9.0"
   },
   "devDependencies": {
-    "env-cmd": "^8.0.2"
+    "env-cmd": "^8.0.2",
+    "jest": "^23.6.0"
   }
 }
